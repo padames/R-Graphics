@@ -1,0 +1,53 @@
+---
+title: "Base R Graphics"
+output:
+  html_document:
+    df_print: paged
+---
+
+# A Simple example
+
+
+```{r create data frame,cache=TRUE}
+dose <- seq(20,60,10)
+drugA <- c(16,20,27,40,60)
+drugB <- c(15,18,25,31,40)
+```
+
+
+```{r simple plot}
+opar <- par(no.readonly=TRUE)
+par(lty=2, pch=17)
+plot(dose, drugA, type="b")
+par(opar)
+```
+
+Add some color.
+
+
+```{r more color}
+library(RColorBrewer)
+n <-7
+mycolors <- brewer.pal(n, "Set1")
+barplot(rep(1,n), col=mycolors)
+```
+
+
+Here the simple plot again
+
+```{r color to simple plot}
+opar <- par(no.readonly=TRUE)
+par(lty=2, pch=17)
+
+plot(dose, drugA, type="b", 
+     fg='yellow', bg = 'blue' )
+abline(a = 10, b = 0.3, col= mycolors[6])
+rect(par("usr")[1], par("usr")[3], par("usr")[2],par("usr")[4], col="blue")
+par(new= TRUE)
+plot(dose, drugA, type="b", 
+     fg='yellow' )
+abline(a = 10, b = 0.3, col= mycolors[6])
+
+par(opar)
+```
+
