@@ -45,7 +45,7 @@ abline(a = 10, b = 0.3, col= mycolors[6])
 rect(par("usr")[1], par("usr")[3], par("usr")[2],par("usr")[4], col="blue")
 par(new= TRUE)
 plot(dose, drugA, type="b", 
-     fg='yellow' )
+     fg='yellow', col = 'yellow' )
 abline(a = 10, b = 0.3, col= mycolors[6])
 
 par(opar)
