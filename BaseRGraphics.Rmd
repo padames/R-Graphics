@@ -48,7 +48,7 @@ Here the simple plot again
 opar <- par(no.readonly=TRUE)
 par(bg="#717171", fg="blue")
 
-plot(dose, drugA)
+plot(dose, drugA, ann = FALSE)
 
 rect(par("usr")[1], par("usr")[3],
      par("usr")[2], par("usr")[4],
