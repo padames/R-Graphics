@@ -37,16 +37,23 @@ Here the simple plot again
 
 ```{r color to simple plot}
 opar <- par(no.readonly=TRUE)
-par(lty=2, pch=17)
 
-plot(dose, drugA, type="b", 
-     fg='yellow', bg = 'blue' )
-abline(a = 10, b = 0.3, col= mycolors[6])
+plot(dose, drugA, type="b",
+     pch = 17, lty = 2)
+abline(a = 10, b = 0.3, lty=2, pch=17)
+
 rect(par("usr")[1], par("usr")[3], par("usr")[2],par("usr")[4], col="blue")
-par(new= TRUE)
-plot(dose, drugA, type="b", 
-     fg='yellow', col = 'yellow' )
-abline(a = 10, b = 0.3, col= mycolors[6])
+
+par(new = TRUE)
+
+plot(dose, drugA, type="b",
+     lty=2, pch=17,
+     fg='yellow', col = 'yellow',
+     main = "Test blue graph background",
+     xlab = "Dose in Units/kg body weight",
+     ylab ="Drug A"
+     )
+abline(a = 10, b = 0.3, lty=2, pch=17, col= mycolors[6])
 
 par(opar)
 ```
