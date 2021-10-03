@@ -1,12 +1,26 @@
 ---
 title: "Base R Graphics"
 output:
-  html_document:
-    df_print: paged
+  html_document: 
+    theme: spacelab
 ---
+
+<style type="text/css">
+body, td {
+   font-size: 10px;
+}
+code.r{
+  font-size: 10px;
+}
+pre {
+  font-size: 14px
+}
+</style>
+
 
 # A Simple example
 
+First create the vectrors to use for the plot.
 
 ```{r create data frame,cache=TRUE}
 dose <- seq(20,60,10)
@@ -14,26 +28,20 @@ drugA <- c(16,20,27,40,60)
 drugB <- c(15,18,25,31,40)
 ```
 
+Two lines build the plot. The `abline` function overplots a straight line based on intercept and slope.
 
-```{r simple plot}
+```{r simple plot, echo=TRUE, cache=TRUE}
 opar <- par(no.readonly=TRUE)
 par(lty=2, pch=17)
 plot(dose, drugA, type="b")
+abline(a = 10, b = 0.3, lty=2, pch=17)
 par(opar)
 ```
 
-Add some color.
 
+### Adding some colour
 
-```{r more color}
-library(RColorBrewer)
-n <-7
-mycolors <- brewer.pal(n, "Set1")
-barplot(rep(1,n), col=mycolors)
-```
-
-
-Here the simple plot again
+Here the simple plot again 
 
 ```{r color to simple plot, cache=FALSE}
 # from https://r-charts.com/base-r/background-color/#background-color-plot
@@ -59,7 +67,34 @@ plot(dose, drugA, type="b",
      ylab ="Drug A"
      )
 abline(a = 10, b = 0.3, lty=2, pch=17, col= "blue")
-
 par(opar)
 ```
 
+# Testing the RColorBrewer package
+
+This package is amazing. My advice is to go check out the palettes available.
+There is one for every need and taste.
+
+
+```{r more color}
+library(RColorBrewer)
+n <-9
+mycolors <- brewer.pal(n, "GnBu")
+barplot(rep(1,n), col=mycolors)
+```
+
+The web tool for guidance in choosing choropleth map color schemes, based on the research of Dr. Cynthia Brewer can be seen in <https://colorbrewer2.org/#>. It mentions color schemes according to data  type: sequential, diverging, or qualitative.
+
+
+Here is a quick way to see general preconfigured palettes, from <https://www.r-graph-gallery.com/38-rcolorbrewers-palettes> or <http://applied-r.com/rcolorbrewer-palettes/>.
+
+The three groups of palettes apply to each type fo data as mentioned above.
+
+
+```{r generate all RColorBrewer palettes}
+library(RColorBrewer)
+opar <- par(no.readonly = TRUE)
+par(mar=c(0,4,0,8)) # bottom, left, top, right
+display.brewer.all()
+par(opar)
+```
