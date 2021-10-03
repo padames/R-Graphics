@@ -35,25 +35,30 @@ barplot(rep(1,n), col=mycolors)
 
 Here the simple plot again
 
-```{r color to simple plot}
+```{r color to simple plot, cache=FALSE}
+# from https://r-charts.com/base-r/background-color/#background-color-plot
 opar <- par(no.readonly=TRUE)
+par(bg="#717171", fg="blue")
 
-plot(dose, drugA, type="b",
-     pch = 17, lty = 2)
-abline(a = 10, b = 0.3, lty=2, pch=17)
+plot(dose, drugA)
 
-rect(par("usr")[1], par("usr")[3], par("usr")[2],par("usr")[4], col="blue")
+rect(par("usr")[1], par("usr")[3],
+     par("usr")[2], par("usr")[4],
+     col = "#A1A1A1") # Color
 
-par(new = TRUE)
+par(new = plot)
 
 plot(dose, drugA, type="b",
      lty=2, pch=17,
-     fg='yellow', col = 'yellow',
+     col = 'blue',
+     col.axis = "blue",
+     col.lab = "blue",
+     col.main = "blue",
      main = "Test blue graph background",
      xlab = "Dose in Units/kg body weight",
      ylab ="Drug A"
      )
-abline(a = 10, b = 0.3, lty=2, pch=17, col= mycolors[6])
+abline(a = 10, b = 0.3, lty=2, pch=17, col= "blue")
 
 par(opar)
 ```
