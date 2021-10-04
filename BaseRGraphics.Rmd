@@ -20,7 +20,7 @@ pre {
 
 # A Simple example
 
-First create the vectrors to use for the plot.
+First create the vectors to use for the plot.
 
 ```{r create data frame,cache=TRUE}
 dose <- seq(20,60,10)
